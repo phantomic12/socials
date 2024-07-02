@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>socials</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+        }
+        a {
+            display: block;
+            margin: 10px;
+            font-size: 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+        a:hover {
+            color: #ddd;
+        }
+        #notification {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+        #notification.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;} 
+            to {bottom: 30px; opacity: 1;}
+        }
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;} 
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>socials</h1>
+        <a href="#" onclick="copyToClipboard('one_phantomic')">discord</a>
+        <a href="https://steamcommunity.com/id/onephn" target="_blank">steam</a>
+        <a href="https://osu.ppy.sh/users/15720715" target="_blank">osu!</a>
+        <a href="https://www.reddit.com/user/onephn/" target="_blank">reddit</a>
+        <a href="https://github.com/phantomic12" target="_blank">github</a>
+    </div>
+
+    <div id="notification">discord username copied!</div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                var notification = document.getElementById('notification');
+                notification.className = "show";
+                setTimeout(function(){ notification.className = notification.className.replace("show", ""); }, 3000);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
